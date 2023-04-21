@@ -8,9 +8,9 @@
 module.exports = {
   
     get: function(req, res){
-        Ride.find()
-            .then(function(Ride){
-                if(!Ride || Ride.length == 0){
+        Character.find()
+            .then(function(Character){
+                if(!Character || Character.length == 0){
                     return res.send({
                         'success': false,
                         'message': 'No record found'
@@ -20,7 +20,7 @@ module.exports = {
                 return res.send({
                     'success':true,
                     'message': 'Record fetched',
-                    'data': Ride
+                    'data': Character
                 })
             })
             .catch(function(err){
@@ -34,8 +34,8 @@ module.exports = {
 
     create: function(req, res){
         sails.log.debug(req.allParams())
-        Ride.create(req.allParams())
-            .then(function(ride){
+        Character.create(req.allParams())
+            .then(function(Character){
                 return res.send({
                     'success': true,
                     'message': 'Record created successfully'
@@ -53,12 +53,12 @@ module.exports = {
     update: function(req, res){
         sails.log.debug(req.param('id'))
 
-        Ride.update(req.param('id'), req.allParams())
-            .then(function(ride){
+        Character.update(req.param('id'), req.allParams())
+            .then(function(Character){
                 return res.send({
                     'success': true,
                     'message': 'Record Update',
-                    'data': ride
+                    'data': Character
                 })
             })
             .catch(function(err){
@@ -71,12 +71,12 @@ module.exports = {
     },
 
     delete: function(req, res){
-        Ride.destroy(req.param('id'))
-            .then(function(ride){
+        Character.destroy(req.param('id'))
+            .then(function(Character){
                 return res.send({
                     'success': true,
                     'message': 'Record deleted successfully',
-                    'data': ride
+                    'data': Character
                 })
             })
             .catch(function(err){
